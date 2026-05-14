@@ -8,7 +8,12 @@ exports.validate = function(response) {
     hasSqliteS3 = true;
   }
 
-  if (process.env['DATABASE'] && process.env['USERNAME'] && process.env['PASSWORD'] && process.env['HOST']) {
+  if (
+    (process.env['DATABASE'] && process.env['USERNAME'] && process.env['PASSWORD'] && process.env['HOST']) ||
+    process.env['POSTGRES_URL'] ||
+    process.env['DATABASE_URL'] ||
+    process.env['NEON_DATABASE_URL']
+  ) {
     hasSQL = true;
   }
 
